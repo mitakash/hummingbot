@@ -4,16 +4,20 @@ from typing import (
     List,
 )
 
-from wings.events import MarketEvent
-from wings.order_book import OrderBook
 from wings.cancellation_result import CancellationResult
-from wings.limit_order import LimitOrder
+from wings.events import (
+    MarketEvent,
+    OrderType
+)
 from wings.event_reporter import EventReporter
-from wings.events import OrderType
+from wings.limit_order import LimitOrder
+from wings.network_iterator import NetworkIterator
+from wings.order_book import OrderBook
+
 NaN = float("nan")
 
 
-cdef class MarketBase(TimeIterator):
+cdef class MarketBase(NetworkIterator):
     MARKET_EVENTS = [
         MarketEvent.ReceivedAsset,
         MarketEvent.BuyOrderCompleted,

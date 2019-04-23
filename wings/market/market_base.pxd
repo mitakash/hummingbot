@@ -1,10 +1,10 @@
 from wings.event_reporter cimport EventReporter
 from wings.order_book cimport OrderBook
-from wings.time_iterator cimport TimeIterator
+from wings.network_iterator cimport NetworkIterator
 from wings.wallet.wallet_base cimport WalletBase
 
 
-cdef class MarketBase(TimeIterator):
+cdef class MarketBase(NetworkIterator):
     cdef:
         EventReporter event_reporter
     cdef str c_buy(self, str symbol, double amount, object order_type=*, double price=*, dict kwargs=*)
